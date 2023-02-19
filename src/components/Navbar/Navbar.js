@@ -4,7 +4,7 @@ import { CartWidget } from "./CartWidget/CartWidget";
 
 export const Navbar = () => {
     return (
-        <nav className="shadow w-full fixed top-0 left-0 font-default">
+        <nav className="shadow w-full font-default">
             <div className="md:flex items-center justify-between bg-violet-100 px-8 py-4">
                 <a className="md:flex items-center" href="#">
                     <img src={logo} alt="logo" />
