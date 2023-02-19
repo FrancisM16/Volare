@@ -1,18 +1,23 @@
+
 import logo from "../../assets/logo.svg";
+import { CartWidget } from "./CartWidget/CartWidget";
 
 export const Navbar = () => {
     return (
-        <nav>
-            <a href="#">
-                <img src={logo} alt="logo" />
-                <span> Volare</span>
-            </a>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Ropa</a></li>
-                <li><a href="#">Accesorios</a></li>
-                <li><a href="#">Calzados</a></li>
-            </ul>
+        <nav className="shadow w-full fixed top-0 left-0 font-default">
+            <div className="md:flex items-center justify-between bg-violet-100 px-8 py-4">
+                <a className="md:flex items-center" href="#">
+                    <img src={logo} alt="logo" />
+                    <span className="ml-2 text-xl">Volare</span>
+                </a>
+                <ul className="md:flex items-center">
+                    <li className="ml-8"><a href="#">Inicio</a></li>
+                    <li className="ml-8"><a href="#">Ropa</a></li>
+                    <li className="ml-8"><a href="#">Accesorios</a></li>
+                    <li className="ml-8"><a href="#">Calzados</a></li>
+                    <CartWidget/>
+                </ul>
+            </div>
         </nav>
     )
 }
