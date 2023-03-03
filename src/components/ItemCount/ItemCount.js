@@ -3,9 +3,9 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { useState } from "react";
 
 export const ItemCount = () => {
-    let [stock, setStock] = useState(10)
-    let [counter, setCounter] = useState(1)
-    let [cart, setCart] = useState(0)
+    const [stock, setStock] = useState(10)
+    const [counter, setCounter] = useState(1)
+    const [cart, setCart] = useState(0)
 
     const handleClickMinus = () => {
         counter > 1 && setCounter(counter - 1)
