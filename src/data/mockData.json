@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "title": "Top lila",
+        "category": "clothe",
+        "brand": "SHEIN",
+        "description": "Top 100% de algodón con tiras para poder ajustar según las preferencias.",
+        "price": 20,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=1tEsu01ELGqbQ__LHd7mSkMDbhGBH2vXd",
+        "highlighted": true
+    },
+    {
+        "id": 2,
+        "title": "Top azul",
+        "category": "clothe",
+        "brand": "DAZY",
+        "description": "Top asimétrico de lino con cuello redondo.",
+        "price": 25,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=1rSY9-2D84XbzIc-spHPrjDEnCR-Rta8Q",
+        "highlighted": true
+    },
+    {
+        "id": 3,
+        "title": "Top bicolor",
+        "category": "clothe",
+        "brand": "SHEIN",
+        "description": "Top de color blanco y negro hecho en lino y con cuello redondo.",
+        "price": 35,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=1HSm2csls-dwNjxs2lEKXl9qfaXmVg8Of",
+        "highlighted": true
+    },
+    {
+        "id": 4,
+        "title": "Top morado",
+        "category": "clothe",
+        "brand": "SHEIN",
+        "description": "Top simétrico de algodón con cuello redondo.",
+        "price": 20,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=1AOrB4HuIY73WbzKu9E2EA8_8Pc2w0Zo0",
+        "highlighted": true
+    },
+    {
+        "id": 5,
+        "title": "Lentes blancos",
+        "category": "accesory",
+        "brand": "SHEIN",
+        "description": "Lentes blancos estilo gato y lunas con protección UV al 80%",
+        "price": 30,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=1c6ymEaWb7_38hsU5DCotTSAxqzI4pmiZ",
+        "highlighted": true
+    },
+    {
+        "id": 6,
+        "title": "Lentes negros",
+        "category": "accesory",
+        "brand": "ICON",
+        "description": "Lentes negros estilo gato y lunas con protección UV al 100%",
+        "price": 20,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=1XZCGmCyBXbCvLyPpL_dfWVTs4sUjZYWe",
+        "highlighted": true
+    },
+    {
+        "id": 7,
+        "title": "Cartera negra",
+        "category": "accesory",
+        "brand": "ICON",
+        "description": "Cartera de cuerina con dije dorado y asa de cadena. Esta recubierta de lona color caqui.",
+        "price": 25,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=1b5DYaCwAYg7pQOB0PRJ0k3YrvNzbobpz",
+        "highlighted": true
+    },
+    {
+        "id": 8,
+        "title": "Cartera blanca",
+        "category": "accesory",
+        "brand": "SHEIN",
+        "description": "Cartera de cuerina con botón en forma de corazón y asa con patrón de seda. Esta recubierta de lona color blanco.",
+        "price": 25,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=1sHIxIUMu4pFx3-6dNfHyqofcZ4sEMN8A",
+        "highlighted": true
+    },
+    {
+        "id": 9,
+        "title": "Sandalias blancas",
+        "category": "footwear",
+        "brand": "SHEIN",
+        "description": "Sandalias de plástico con plataforma para ducha.",
+        "price": 40,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=16pcHmRrhK7N469HKrnjEt0L1etDGxada",
+        "highlighted": true
+    },
+    {
+        "id": 10,
+        "title": "Estiletos negros",
+        "category": "footwear",
+        "brand": "CUCOO",
+        "description": "Taco 9 de gamusa color negro y con plataforma",
+        "price": 45,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=1SE0vC-IQ8YBmrmAlxPaDB0539REF4kBP",
+        "highlighted": true
+    },
+    {
+        "id": 11,
+        "title": "Estiletos amarillos",
+        "category": "footwear",
+        "brand": "SHEIN",
+        "description": "Taco 9 forrado y con plataforma",
+        "price": 50,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=1myPw1b9YZHLX6svG1Cf7NVKJtFMYAP2L",
+        "highlighted": true
+    },
+    {
+        "id": 12,
+        "title": "Estiletos nude",
+        "category": "footwear",
+        "brand": "CUCOO",
+        "description": "Taco 9 forrado con correa y plataforma",
+        "price": 50,
+        "pictureUrl": "http://drive.google.com/uc?export=view&id=12JL0ICK3yStKRWJsnz2e5fOAVuQ7QGjV",
+        "highlighted": true
+    }
+]
