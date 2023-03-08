@@ -7,3 +7,11 @@ export const pedirDatos = () => {
         }, 2000)
     })
 }
+
+export const pedirProductoPorId = (id) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(mockData.find(prod => prod.id === id))
+        }, 1500)
+    })
+}

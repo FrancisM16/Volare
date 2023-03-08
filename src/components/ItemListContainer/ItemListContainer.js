@@ -28,11 +28,11 @@ export const ItemListContainer = () => {
     }, [categoryId])
 
     return (
-        <article className="container mx-auto mt-4 text-xl">
+        <article className="container mx-auto mt-4">
             {
                 loading
                     ? <h2>Cargando...</h2>
-                    : <ItemList items={productos} />
+                    : <ItemList items={productos} category={categoryId}/>
             }
         </article>
     )
