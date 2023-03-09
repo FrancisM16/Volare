@@ -11,7 +11,7 @@ export const ItemDetail = ({ item }) => {
     }
 
     return (
-        <div className="container mx-auto mt-8 space-y-6 font-default">
+        <div className="container mx-auto py-6 space-y-6 font-default">
             <div className="space-x-2 hover:text-indigo-600">
                 <FontAwesomeIcon icon={solid('chevron-left')} size='sm' />
                 <button onClick={handleVolver} className="btn btn-primary">Volver</button>

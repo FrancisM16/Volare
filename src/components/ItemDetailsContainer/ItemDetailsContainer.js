@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { pedirProductoPorId } from "../../helpers/pedirDatos"
+import { Spinner } from "../Spinner/Spinner"
 import { ItemDetail } from "./ItemDetail/ItemDetail"
 
 export const ItemDetailsContainer = () => {
@@ -22,10 +23,10 @@ export const ItemDetailsContainer = () => {
     }, [])
 
     return (
-        <article className="container mx-auto mt-4">
+        <article className="h-full">
             {
                 loading
-                    ? <h2>Cargando...</h2>
+                    ? <Spinner/>
                     : <ItemDetail item={item}/>
             }
         </article>

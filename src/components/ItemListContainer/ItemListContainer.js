@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { pedirDatos } from '../../helpers/pedirDatos'
 import { ItemList } from './ItemList/ItemList'
 import { useParams } from 'react-router-dom'
+import { Spinner } from '../Spinner/Spinner'
 
 export const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
@@ -28,10 +29,10 @@ export const ItemListContainer = () => {
     }, [categoryId])
 
     return (
-        <article className="container mx-auto mt-4">
+        <article className="h-full">
             {
                 loading
-                    ? <h2>Cargando...</h2>
+                    ? <Spinner/>
                     : <ItemList items={productos} category={categoryId}/>
             }
         </article>

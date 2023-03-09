@@ -2,7 +2,7 @@ import { Item } from "./Item/Item"
 
 export const ItemList = ({ items, category }) => {
     return (
-        <div>
+        <div className="container mx-auto py-6">
             {
                 category
                     ? 
