@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 export const Item = ({ item }) => {
     return (
-        <div className="border border-slate-200 bg-white rounded-lg hover:scale-105 shadow-sm hover:shadow-lg hover:shadow-indigo-50 font-default">
+        <div className="border border-slate-200 bg-white rounded-lg md:hover:scale-105 shadow-sm hover:shadow-lg hover:shadow-indigo-50 font-default sm:hover:scale-0">
             <div className="px-4 pt-4">
                 <img className="rounded-md" src={item.pictureUrl} alt={item.title} />
             </div>

@@ -11,17 +11,19 @@ export const ItemDetail = ({ item }) => {
     }
 
     return (
-        <div className="container mx-auto py-6 space-y-6 font-default">
-            <div className="space-x-2 hover:text-indigo-600">
+        <div className="container mx-auto md:py-6 space-y-6 font-default px-4 py-4">
+            <button onClick={handleVolver} className="hover:text-indigo-600 space-x-2">
                 <FontAwesomeIcon icon={solid('chevron-left')} size='sm' />
-                <button onClick={handleVolver} className="btn btn-primary">Volver</button>
-            </div>
-            <div className="flex items-center border border-slate-200 bg-white rounded-lg shadow-sm font-default">
-                <img className="object-scale-down h-1/5 w-1/5 m-4" src={item.pictureUrl} alt={item.title} />
-                <div>
-                    <h2 className="text-2xl pb-4 font-semibold">{item.title}</h2>
+                <span>Volver</span>
+            </button>
+            <div className="md:flex md:items-center border border-slate-200 bg-white rounded-lg shadow-sm flex-none p-4 md:space-x-8 space-y-8">
+                <img className="md:object-scale-down md:h-1/5 md:w-1/5 h-full w-full rounded-md" src={item.pictureUrl} alt={item.title} />
+                <div className="space-y-4">
+                    <div>
+                        <h2 className="text-2xl font-semibold">{item.title}</h2>
+                        <p className="text-xl text-indigo-900">${item.price}</p>
+                    </div>
                     <p>{item.description}</p>
-                    <p>Precio: ${item.price}</p>
                     <ItemCount />
                 </div>
             </div>
