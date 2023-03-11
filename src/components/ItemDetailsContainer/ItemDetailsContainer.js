@@ -20,6 +20,7 @@ export const ItemDetailsContainer = () => {
             .finally(() => {
                 setLoading(false)
             })
+    // eslint-disable-next-line 
     }, [])
 
     return (
