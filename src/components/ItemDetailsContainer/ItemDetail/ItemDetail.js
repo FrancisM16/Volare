@@ -18,7 +18,7 @@ export const ItemDetail = ({ item }) => {
             </button>
             <div className="md:flex md:items-center border border-slate-200 bg-white rounded-lg shadow-sm flex-none p-4 md:space-x-8 space-y-8 md:space-y-0">
                 <img className="md:object-scale-down md:h-1/5 md:w-1/5 h-full w-full rounded-md" src={item.pictureUrl} alt={item.title} />
-                <div className="space-y-4 md:space-y-0">
+                <div className="space-y-4">
                     <div>
                         <h2 className="text-2xl font-semibold">{item.title}</h2>
                         <p className="text-xl text-indigo-900">${item.price}</p>
