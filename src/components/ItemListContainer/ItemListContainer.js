@@ -4,6 +4,7 @@ import { pedirDatos } from '../../helpers/pedirDatos'
 import { ItemList } from './ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 import { Spinner } from '../Spinner/Spinner'
+import { Circle } from '../Circle/Circle'
 
 export const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
@@ -33,7 +34,12 @@ export const ItemListContainer = () => {
             {
                 loading
                     ? <Spinner/>
-                    : <ItemList items={productos} category={categoryId}/>
+                    : 
+                        <div>
+                            <Circle color="bg-pink-200" coordX="inset-x-1/4" coordY="inset-y-1/4" />
+                            <Circle color="bg-purple-200" coordX="inset-x-2/4" coordY="inset-y-2/4" />
+                            <ItemList items={productos} category={categoryId} />
+                        </div>
             }
         </article>
     )
