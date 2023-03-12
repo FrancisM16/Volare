@@ -2,7 +2,7 @@
     {
         "id": 1,
         "title": "Top lila",
-        "category": "clothe",
+        "category": "clothing",
         "brand": "SHEIN",
         "description": "Top 100% de algodón con tiras para poder ajustar según las preferencias.",
         "price": 20,
@@ -12,7 +12,7 @@
     {
         "id": 2,
         "title": "Top azul",
-        "category": "clothe",
+        "category": "clothing",
         "brand": "DAZY",
         "description": "Top asimétrico de lino con cuello redondo.",
         "price": 25,
@@ -22,7 +22,7 @@
     {
         "id": 3,
         "title": "Top bicolor",
-        "category": "clothe",
+        "category": "clothing",
         "brand": "SHEIN",
         "description": "Top de color blanco y negro hecho en lino y con cuello redondo.",
         "price": 35,
@@ -32,7 +32,7 @@
     {
         "id": 4,
         "title": "Top morado",
-        "category": "clothe",
+        "category": "clothing",
         "brand": "SHEIN",
         "description": "Top simétrico de algodón con cuello redondo.",
         "price": 20,

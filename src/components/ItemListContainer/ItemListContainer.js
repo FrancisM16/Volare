@@ -38,7 +38,7 @@ export const ItemListContainer = () => {
                     <div>
                         <Circle color="bg-pink-200" coordX="inset-x-1/4" coordY="inset-y-1/4" />
                         <Circle color="bg-purple-200" coordX="inset-x-2/4" coordY="inset-y-2/4" />
-                        <ItemList items={productos} category={categoryId} />
+                        <ItemList items={productos}/>
                     </div>
             }
         </article>

@@ -33,14 +33,14 @@ export const Navbar = () => {
                         }
                     </button>
                 </div>
-                <ul className={`absolute bg-violet-50 md:bg-transparent w-full z-[-1] py-8 space-y-4 
-                                md:space-y-0 md:py-0 md:z-0 md:w-fit md:static md:flex md:items-center duration-500 ease-in 
-                                ${menu ? 'top-16 ' : 'top-[-400px]'}`}>
+                <ul className={`absolute bg-violet-50 md:bg-transparent w-full z-[-1] py-8 space-y-4 duration-500 ease-in
+                                md:space-y-0 md:py-0 md:z-0 md:w-fit md:static md:flex md:items-center md:transition-none
+                                ${menu ? 'top-16' : 'top-[-400px]'}`}>
                     <li className="ml-8">
                         <NavLink onClick={handleCloseMenu} to="/" className={({ isActive }) => isActive ? "link-active" : "link-inactive"}>Inicio</NavLink>
                     </li>
                     <li className="ml-8">
-                        <NavLink onClick={handleCloseMenu} to="/category/clothe" className={({ isActive }) => isActive ? "link-active" : "link-inactive"}>Ropa</NavLink>
+                        <NavLink onClick={handleCloseMenu} to="/category/clothing" className={({ isActive }) => isActive ? "link-active" : "link-inactive"}>Ropa</NavLink>
                     </li>
                     <li className="ml-8">
                         <NavLink onClick={handleCloseMenu} to="/category/accesory" className={({ isActive }) => isActive ? "link-active" : "link-inactive"}>Accesorios</NavLink>
