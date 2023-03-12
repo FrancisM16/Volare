@@ -29,7 +29,7 @@ export const ItemCount = () => {
                 <p> Stock : {stock}</p>
                 <p> Cart : {cart}</p>
             </div>
-            <div className="flex md:items-center flex-col md:flex-row mt-4 font-default md:space-x-8 space-y-4 md:space-y-0">
+            <div className="flex flex-col mt-4 space-y-4 md:space-y-0 md:space-x-8 md:items-center md:flex-row font-default">
                 <div className="flex items-center border rounded-md border-slate-500 w-fit">
                     <button onClick={handleClickMinus} className="p-2 border rounded-l-md border-r-slate-500 bg-slate-100 hover:bg-slate-200">
                         <FontAwesomeIcon icon={solid('minus')} size='lg' />
