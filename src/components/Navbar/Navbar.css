@@ -1,0 +1,25 @@
+.link-active {
+    color : #312E81;
+    display: inline;
+    border-bottom-width:2px;
+    border-bottom-color: #6366F1;
+    padding-bottom:2px;
+}
+.link-inactive {
+    position : relative;
+    color : #000000;
+    display : inline-block;
+}
+.link-inactive:after {
+    content: "";
+    position: absolute;
+    background-color: #6366F1;
+    height: 2px;
+    width: 0;
+    left: 0;
+    bottom: -3px;
+    transition: 0.3s;
+}
+.link-inactive:hover:after {
+    width: 100%;
+}
