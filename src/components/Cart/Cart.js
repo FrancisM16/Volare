@@ -2,10 +2,28 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import empty from "../../assets/empty.svg";
 import './Cart.css'
+import { Link } from "react-router-dom";
 
 export const Cart = () => {
     const { cart, totalPurchase, clear, removeItemCart } = useContext(CartContext)
+
+    if (cart.length === 0) {
+        return (
+            <div className="flex items-center justify-center h-full">
+                <div className="grid justify-items-center space-y-10">
+                    <img src={empty} alt="empty" />
+                    <div className="grid justify-items-center space-y-4">
+                        <h2>No tienes productos agregados</h2>
+                        <Link to="/" className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center">
+                            Ir al inicio
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        )
+    }
     return (
         <div className="container mx-auto space-y-6 p-4 md:py-6 font-default">
             <h2 className="text-xl">Tu compra</h2>
@@ -33,7 +51,7 @@ export const Cart = () => {
                                     <td className="px-6 py-3">${prod.price * prod.amount}</td>
                                     <td className="px-6 py-3">
                                         <button onClick={() => removeItemCart(prod.id)}>
-                                            <FontAwesomeIcon icon={solid('trash')} size='lg' className="trash"/>
+                                            <FontAwesomeIcon icon={solid('trash')} size='lg' className="trash" />
                                         </button>
                                     </td>
                                 </tr>

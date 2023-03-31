@@ -4,6 +4,7 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { ItemCount } from "./ItemCount/ItemCount";
 import { useContext, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
+import { StockInfo } from "./StockInfo/StockInfo";
 
 export const ItemDetail = ({ item }) => {
     const { addItemCart, isInCart } = useContext(CartContext)
@@ -41,12 +42,17 @@ export const ItemDetail = ({ item }) => {
                             ? <div className="flex flex-col md:flex-row font-default">
                                 <Link to="/cart" className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center">Finalizar compra</Link>
                             </div>
-                            : <ItemCount
-                                stock={item.stock}
-                                amount={amount}
-                                setAmount={setAmount}
-                                handleAdd={handleAdd}
-                            />
+                            : <div>
+                                {
+                                    item.stock <= 5 && <StockInfo stock={item.stock} />
+                                }
+                                <ItemCount
+                                    stock={item.stock}
+                                    amount={amount}
+                                    setAmount={setAmount}
+                                    handleAdd={handleAdd}
+                                />
+                            </div>
                     }
                 </div>
             </div>
