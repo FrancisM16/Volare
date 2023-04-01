@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { pedirDatos } from '../../helpers/pedirDatos'
 import { ItemList } from './ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 import { Spinner } from '../Spinner/Spinner'
 import { Circle } from '../Circle/Circle'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import { db } from '../../firebase/config'
 
 export const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
@@ -13,18 +14,20 @@ export const ItemListContainer = () => {
 
     useEffect(() => {
         setLoading(true)
-        pedirDatos()
-            .then((response) => {
-                if (!categoryId) {
-                    setProductos(response)
-                } else {
-                    setProductos(response.filter((prod) => prod.category === categoryId))
-                }
+        
+        const productsRef = collection(db, "products")
+        const queryItem = categoryId
+                            ? query(productsRef, where("category","==",categoryId))
+                            : productsRef
+
+        getDocs(queryItem)
+            .then((res) => {
+                const docs = res.docs.map((doc) =>{
+                    return {id: doc.id,...doc.data()}
+                })
+                setProductos(docs)
             })
-            .catch((error) => {
-                console.log(error)
-            })
-            .finally(() => {
+            .finally(()=>{
                 setLoading(false)
             })
     }, [categoryId])

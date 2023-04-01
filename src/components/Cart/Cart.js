@@ -61,8 +61,10 @@ export const Cart = () => {
                 </table>
             </div>
             <h3>Total: ${totalPurchase()}</h3>
-            <div className="flex flex-col md:flex-row font-default">
-                <button onClick={clear} className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center">Vaciar carrito</button>
+            <div className="flex flex-col space-x-0 space-y-4 md:space-x-2 md:space-y-0 md:flex-row font-default">
+                <button onClick={clear} className="border rounded-md py-2 px-4 border-violet-900 hover:bg-violet-900 hover:text-white text-center">Vaciar carrito</button>
+                <Link className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center"
+                to="/checkout">Terminar mi compra</Link>
             </div>
         </div>
     )
