@@ -2,12 +2,27 @@ import { CartWidget } from "./CartWidget/CartWidget";
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../assets/logo.svg";
+import { collection, getDocs} from 'firebase/firestore'
+import { db } from '../../firebase/config'
 import './Navbar.css'
 
 export const Navbar = () => {
     const [menu, setMenu] = useState(false);
+    const [category, setCategory] = useState([])
+
+    useEffect(() => {
+        const categoryRef = collection(db, "category")
+
+        getDocs(categoryRef)
+            .then((res) => {
+                const docs = res.docs.map((doc) =>{
+                    return {id: doc.id,...doc.data()}
+                })
+                setCategory(docs)
+            })
+    })
 
     const handleClick = () => {
         setMenu(!menu)
@@ -39,15 +54,17 @@ export const Navbar = () => {
                     <li className="ml-8">
                         <NavLink onClick={handleCloseMenu} to="/" className={({ isActive }) => isActive ? "link-active" : "link-inactive"}>Inicio</NavLink>
                     </li>
-                    <li className="ml-8">
-                        <NavLink onClick={handleCloseMenu} to="/category/clothing" className={({ isActive }) => isActive ? "link-active" : "link-inactive"}>Ropa</NavLink>
-                    </li>
-                    <li className="ml-8">
-                        <NavLink onClick={handleCloseMenu} to="/category/accesory" className={({ isActive }) => isActive ? "link-active" : "link-inactive"}>Accesorios</NavLink>
-                    </li>
-                    <li className="ml-8">
-                        <NavLink onClick={handleCloseMenu} to="/category/footwear" className={({ isActive }) => isActive ? "link-active" : "link-inactive"}>Calzados</NavLink>
-                    </li>
+                    {category.map((data) => (
+                        <li className="ml-8" key={data.id}>
+                            <NavLink
+                                onClick={handleCloseMenu}
+                                className={({ isActive }) => isActive ? "link-active" : "link-inactive"}
+                                to={`/category/${data.type}`}
+                            >
+                                {data.name}
+                            </NavLink>
+                        </li>
+                    ))}
                     <CartWidget />
                 </ul>
             </div>
