@@ -1,13 +1,26 @@
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
-import { ItemCount } from "./ItemCount/ItemCount"
+import { ItemCount } from "./ItemCount/ItemCount";
+import { useContext, useState } from "react";
+import { CartContext } from "../../../context/CartContext";
+import { StockInfo } from "./StockInfo/StockInfo";
 
 export const ItemDetail = ({ item }) => {
+    const { addItemCart, isInCart } = useContext(CartContext)
+    const [amount, setAmount] = useState(1)
     const navigate = useNavigate()
 
     const handleVolver = () => {
         navigate(-1)
+    }
+
+    const handleAdd = () => {
+        const newItem = {
+            ...item,
+            amount
+        }
+        addItemCart(newItem)
     }
 
     return (
@@ -24,7 +37,23 @@ export const ItemDetail = ({ item }) => {
                         <p className="text-xl text-indigo-900">${item.price}</p>
                     </div>
                     <p>{item.description}</p>
-                    <ItemCount />
+                    {
+                        isInCart(item.id)
+                            ? <div className="flex flex-col md:flex-row font-default">
+                                <Link to="/cart" className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center">Finalizar compra</Link>
+                            </div>
+                            : <div>
+                                {
+                                    item.stock <= 5 && <StockInfo stock={item.stock} />
+                                }
+                                <ItemCount
+                                    stock={item.stock}
+                                    amount={amount}
+                                    setAmount={setAmount}
+                                    handleAdd={handleAdd}
+                                />
+                            </div>
+                    }
                 </div>
             </div>
         </div>
