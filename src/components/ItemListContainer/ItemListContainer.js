@@ -1,18 +1,24 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { ItemList } from './ItemList/ItemList'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Spinner } from '../Spinner/Spinner'
 import { Circle } from '../Circle/Circle'
 import { collection, getDocs, query, where } from 'firebase/firestore'
+import  categories  from '../../data/category.json'
 import { db } from '../../firebase/config'
 
 export const ItemListContainer = () => {
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
     const { categoryId } = useParams()
 
     useEffect(() => {
+        if(!categories.some(category => category.type === categoryId)) {
+            navigate("/")
+        }
+
         setLoading(true)
         
         const productsRef = collection(db, "products")
@@ -30,7 +36,7 @@ export const ItemListContainer = () => {
             .finally(()=>{
                 setLoading(false)
             })
-    }, [categoryId])
+    }, [categoryId, navigate])
 
     return (
         <article className="h-full">

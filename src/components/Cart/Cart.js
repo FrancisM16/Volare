@@ -8,6 +8,7 @@ import './Cart.css'
 
 export const Cart = () => {
     const { cart, removeItemCart } = useContext(CartContext)
+    console.log(cart)
 
     if (cart.length === 0) {
         return (<EmptyCart />)

@@ -1,28 +1,17 @@
 import { CartWidget } from "./CartWidget/CartWidget";
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import logo from "../../assets/logo.svg";
-import { collection, getDocs} from 'firebase/firestore'
-import { db } from '../../firebase/config'
+import { AuthContext } from "../../context/AuthContext";
+import category from "../../data/category.json"
 import './Navbar.css'
 
+
 export const Navbar = () => {
-    const [menu, setMenu] = useState(false);
-    const [category, setCategory] = useState([])
-
-    useEffect(() => {
-        const categoryRef = collection(db, "category")
-
-        getDocs(categoryRef)
-            .then((res) => {
-                const docs = res.docs.map((doc) =>{
-                    return {id: doc.id,...doc.data()}
-                })
-                setCategory(docs)
-            })
-    })
+    const [menu, setMenu] = useState(false)
+    const { user } = useContext(AuthContext)
 
     const handleClick = () => {
         setMenu(!menu)
@@ -66,6 +55,16 @@ export const Navbar = () => {
                         </li>
                     ))}
                     <CartWidget />
+                    {
+                        user.logged
+                        ? <Link className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center"
+                            to="/profile">Mi perfil
+                        </Link>
+                        : <Link className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center"
+                            to="/login">Iniciar sesión
+                        </Link>
+                    }
+
                 </ul>
             </div>
         </nav>

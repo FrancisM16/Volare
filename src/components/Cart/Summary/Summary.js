@@ -1,9 +1,12 @@
 import { useContext } from "react"
 import { CartContext } from "../../../context/CartContext"
 import { Link } from "react-router-dom"
+import { AuthContext } from "../../../context/AuthContext"
 
 export const Summary = () => {
-    const { totalPurchase, clear } = useContext(CartContext)
+    const { totalPurchase, clear, createOrder } = useContext(CartContext)
+    const { user } = useContext(AuthContext)
+
     return (
         <div className="border border-slate-200 bg-white rounded-lg shadow-sm p-8 space-y-4">
             <h2 className="text-lg">Resumen</h2>
@@ -15,10 +18,15 @@ export const Summary = () => {
                         className="border rounded-md py-2 px-4 border-violet-900 hover:bg-violet-900 hover:text-white text-center">
                         Vaciar carrito
                     </button>
-
-                    <Link className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center"
-                        to="/checkout">Terminar mi compra
-                    </Link>
+                    {
+                        user.logged
+                            ? <button className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center"
+                                onClick={createOrder}>Terminar mi compra
+                            </button>
+                            : <Link className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center"
+                                to="/login">Iniciar sesión
+                            </Link>
+                    }
 
                 </div>
             </div>
