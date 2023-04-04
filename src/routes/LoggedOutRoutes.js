@@ -5,7 +5,7 @@ import { Spinner } from '../components/Spinner/Spinner'
 
 export const LoggedOutRoutes = () => {
     const { user, isNavigationReady } = useContext(AuthContext)
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     if (user.logged && isNavigationReady) {
         navigate("/");

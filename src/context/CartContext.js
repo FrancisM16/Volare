@@ -2,8 +2,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from "../firebase/config"
-import { toast } from 'react-toastify';
-import swal from "sweetalert2";
+import { toast } from 'react-toastify'
+import swal from "sweetalert2"
 
 export const CartContext = createContext()
 

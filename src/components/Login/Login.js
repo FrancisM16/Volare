@@ -5,17 +5,25 @@ import { CartContext } from '../../context/CartContext'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"
 import { useForm } from 'react-hook-form'
+import { ToastContainer } from 'react-toastify'
 import bags from "../../assets/bags.svg";
 
 export const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()
-    const { login } = useContext(AuthContext)
+    const { login, showModalError } = useContext(AuthContext)
     const { cart } = useContext(CartContext)
     const navigate = useNavigate()
 
-    const onSubmit = (data) => {
-        login(data)
-        cart.length === 0 ? navigate("/") : navigate("/cart")
+    const onSubmit = async (data) => {
+        try {
+            await login(data)
+            cart.length === 0 ? navigate("/") : navigate("/cart")
+        }
+        catch (e) {
+            navigate("/login")
+            showModalError()
+        }
+
     }
 
     return (
@@ -80,6 +88,7 @@ export const Login = () => {
                 <div className="w-80 h-80 rounded-full bg-gradient-to-tr from-violet-900 to-orange-200 animate-[pulse_8s_ease-in-out_infinite]" />
                 <img src={bags} alt="logo" className="absolute" />
             </div>
+            <ToastContainer />
         </div>
     )
 }

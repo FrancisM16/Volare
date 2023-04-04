@@ -2,6 +2,7 @@ import { signOut, createUserWithEmailAndPassword, onAuthStateChanged, signInWith
 import { createContext, useEffect, useState } from "react"
 import { addDoc, collection, getDocs, where, query } from 'firebase/firestore'
 import { auth, db } from "../firebase/config"
+import { toast } from 'react-toastify'
 
 export const AuthContext = createContext()
 
@@ -19,8 +20,20 @@ export const AuthProvider = ({ children }) => {
     })
 
     const login = (values) => {
-        signInWithEmailAndPassword(auth, values.email, values.password)
-            .catch((err) => console.log(err))
+        return signInWithEmailAndPassword(auth, values.email, values.password)
+    }
+
+    const showModalError = () => {
+        toast.error(`Usuario no registrado`, {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
     }
 
     const registerUser = (values) => {
@@ -87,6 +100,7 @@ export const AuthProvider = ({ children }) => {
             isNavigationReady,
             registerUser,
             login,
+            showModalError,
             logout
         }}>
             {children}
