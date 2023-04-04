@@ -1,10 +1,19 @@
 import { useContext } from 'react'
-import { Outlet, Navigate } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
+import { Spinner } from '../components/Spinner/Spinner'
 
 export const LoggedOutRoutes = () => {
-    const { user } = useContext(AuthContext)
-    return(
-        user.logged ? <Navigate to="/" replace/> : <Outlet/>
-    )
+    const { user, isNavigationReady } = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    if (user.logged && isNavigationReady) {
+        navigate("/");
+    }
+
+    if (!isNavigationReady){
+        return(<Spinner/>)
+    }
+
+    return <Outlet />
 }

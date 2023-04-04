@@ -19,7 +19,7 @@ export const ItemCount = ({ stock, amount, setAmount, handleAdd }) => {
 
     return (
         <div className="container mx-auto">
-            <div className="flex flex-col mt-4 space-y-4 md:space-y-0 md:space-x-8 md:items-center md:flex-row font-default">
+            <div className="flex flex-col mt-4 space-y-4 md:space-y-0 md:space-x-8 md:items-center md:flex-row">
                 <div className="flex items-center border rounded-md border-slate-500 w-fit">
                     <button onClick={handleClickMinus}
                         className={`p-2 border rounded-l-md border-r-slate-500 bg-slate-100 

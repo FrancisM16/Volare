@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
-import { addDoc, collection, getDocs, query, where } from 'firebase/firestore'
+import { addDoc, collection } from 'firebase/firestore'
 import { db } from "../firebase/config"
-import swal from "sweetalert";
+import { toast } from 'react-toastify';
+import swal from "sweetalert2";
 
 export const CartContext = createContext()
 
@@ -16,8 +17,9 @@ export const CartProvider = ({ children }) => {
         setCart([...cart, item])
     }
 
-    const removeItemCart = (id) => {
-        setCart(cart.filter((prod) => prod.id !== id))
+    const removeItemCart = (item) => {
+        setCart(cart.filter((prod) => prod.id !== item.id))
+        showModalRemoveCart(item)
     }
 
     const isInCart = (id) => {
@@ -36,24 +38,74 @@ export const CartProvider = ({ children }) => {
         setCart([])
     }
 
+    const showModalAddCart = (item) => {
+        const amountText = item.amount === 1
+            ? "Agregaste 1 unidad"
+            : `Agregaste ${item.amount} unidades`
+
+        toast.success(`${amountText}`, {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
+    }
+
+    const showModalRemoveCart = (item) => {
+        const amountText = item.amount === 1
+            ? "Eliminaste 1 unidad"
+            : `Eliminaste ${item.amount} unidades`
+
+        toast.error(`${amountText}`, {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+    }
+
+
     const createOrder = () => {
-        const order = {
-            cliente: {...userInfo, uid: user.uid},
-            items: cart.map((prod) => ({ id: prod.id, title: prod.title, price: prod.price, stock: prod.stock })),
-            total: totalPurchase(),
-            fecha: new Date()
-        }
+        swal.fire({
+            title: "Confirmar compra",
+            text: "¿Deseas pagar $" + totalPurchase() + " por tus productos?",
+            icon: "question",
+            showCancelButton: true,
+            showCloseButton: true,
+            confirmButtonColor: '#4C1D95',
+            cancelButtonText: "No, cancelar",
+            confirmButtonText: "Sí, pagar",
+            allowOutsideClick: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const order = {
+                    cliente: { ...userInfo, uid: user.uid },
+                    items: cart.map((prod) => ({ id: prod.id, title: prod.title, price: prod.price, stock: prod.stock })),
+                    total: totalPurchase(),
+                    fecha: new Date()
+                }
 
-        const orderRef = collection(db, "orders")
+                const orderRef = collection(db, "orders")
 
-        addDoc(orderRef, order)
-        .then((doc) => {
-            swal({
-				icon: 'success',
-				title: 'Compra exitosa',
-				text: `N° de orden: ${ doc.id }`,
-			})
-            clear()
+                addDoc(orderRef, order)
+                    .then((doc) => {
+                        swal.fire({
+                            title: "¡Compra exitosa!",
+                            text: `N° de orden: ${doc.id}`,
+                            icon: "success",
+                            confirmButtonColor: "#4C1D95"
+                        })
+                        clear()
+                    })
+            }
         })
     }
 
@@ -71,7 +123,7 @@ export const CartProvider = ({ children }) => {
             totalCant,
             totalPurchase,
             createOrder,
-            // getOrders,
+            showModalAddCart,
             clear
         }}>
             {children}

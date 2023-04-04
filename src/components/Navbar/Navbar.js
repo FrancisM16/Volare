@@ -22,7 +22,7 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className={`w-full font-default z-[1] top-0 sticky`}>
+        <nav className={`w-full z-[1] top-0 sticky`}>
             <div className="items-center justify-between bg-violet-100 px-0 py-4 md:px-8 md:flex">
                 <div className="flex items-center justify-between px-4 md:px-0">
                     <NavLink to="/" className="flex items-center">

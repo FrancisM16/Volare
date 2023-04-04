@@ -6,7 +6,7 @@ import { auth, db } from "../firebase/config"
 export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-
+    const [isNavigationReady, setIsNavigationReady] = useState(false)
     const [user, setUser] = useState({
         email: null,
         logged: false,
@@ -20,23 +20,10 @@ export const AuthProvider = ({ children }) => {
 
     const login = (values) => {
         signInWithEmailAndPassword(auth, values.email, values.password)
-            // .then(userCredential =>{
-            //     const userInfoQuery = query(collection(db, "userInfo"), where("uid", "==", userCredential.user.uid))
-            //     getDocs(userInfoQuery)
-            //         .then((userInfos) => {
-            //             userInfos.forEach(info =>{
-            //                 const infoData = info.data()
-            //                 setUserInfo({
-            //                     name: infoData.name,
-            //                     address: infoData.address
-            //                 })
-            //             })
-            //         })
-            // })
             .catch((err) => console.log(err))
     }
 
-    const register = (values) => {
+    const registerUser = (values) => {
         createUserWithEmailAndPassword(auth, values.email, values.password)
             .then(userCredential => {
                 const userRef = collection(db, 'userInfo')
@@ -66,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         console.log("Auth Context 1")
-        onAuthStateChanged(auth, (user) => {
+        onAuthStateChanged(auth, async (user) => {
             console.log("Auth Context 2")
             if (user) {
                 console.log("Auth Context 3")
@@ -76,19 +63,19 @@ export const AuthProvider = ({ children }) => {
                     uid: user.uid
                 })
                 const userInfoQuery = query(collection(db, "userInfo"), where("uid", "==", user.uid))
-                getDocs(userInfoQuery)
-                    .then((userInfos) => {
-                        userInfos.forEach(info =>{
-                            const infoData = info.data()
-                            setUserInfo({
-                                name: infoData.name,
-                                address: infoData.address
-                            })
-                        })
+                const userInfos = await getDocs(userInfoQuery)
+                userInfos.forEach(info => {
+                    const infoData = info.data()
+                    setUserInfo({
+                        name: infoData.name,
+                        address: infoData.address
                     })
-            } else {
-                logout()
+                })
+                setIsNavigationReady(true)
+                return
             }
+            logout()
+            setIsNavigationReady(true)
         })
     }, [])
 
@@ -97,7 +84,8 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value={{
             user,
             userInfo,
-            register,
+            isNavigationReady,
+            registerUser,
             login,
             logout
         }}>

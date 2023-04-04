@@ -12,8 +12,7 @@ export const Summary = () => {
             <h2 className="text-lg">Resumen</h2>
             <div className="space-y-2">
                 <h3>Total: ${totalPurchase()}</h3>
-                <div className="flex flex-col space-x-0 space-y-4 xl:space-x-2 xl:space-y-0 xl:flex-row font-default">
-
+                <div className="flex flex-col space-x-0 space-y-4 xl:space-x-2 xl:space-y-0 xl:flex-row">
                     <button onClick={clear}
                         className="border rounded-md py-2 px-4 border-violet-900 hover:bg-violet-900 hover:text-white text-center">
                         Vaciar carrito
@@ -29,6 +28,11 @@ export const Summary = () => {
                     }
 
                 </div>
+                {
+                    user.logged 
+                        ? null
+                        : <p className="text-red-600 text-sm text-center xl:text-left">Debes iniciar sesión para continuar</p>
+                }
             </div>
         </div>
     )

@@ -5,9 +5,10 @@ import { ItemCount } from "./ItemCount/ItemCount";
 import { useContext, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { StockInfo } from "./StockInfo/StockInfo";
+import { ToastContainer } from 'react-toastify';
 
 export const ItemDetail = ({ item }) => {
-    const { addItemCart, isInCart } = useContext(CartContext)
+    const { addItemCart, isInCart, showModalAddCart } = useContext(CartContext)
     const [amount, setAmount] = useState(1)
     const navigate = useNavigate()
 
@@ -21,10 +22,11 @@ export const ItemDetail = ({ item }) => {
             amount
         }
         addItemCart(newItem)
+        showModalAddCart(newItem)
     }
 
     return (
-        <div className="container mx-auto space-y-6 p-4 md:py-6 font-default">
+        <div className="container mx-auto space-y-6 p-4 md:py-6">
             <button onClick={handleVolver} className="hover:text-indigo-600 space-x-2">
                 <FontAwesomeIcon icon={solid('chevron-left')} size='sm' />
                 <span>Volver</span>
@@ -39,7 +41,7 @@ export const ItemDetail = ({ item }) => {
                     <p>{item.description}</p>
                     {
                         isInCart(item.id)
-                            ? <div className="flex flex-col md:flex-row font-default">
+                            ? <div className="flex flex-col md:flex-row">
                                 <Link to="/cart" className="border rounded-md py-2 px-4 text-white bg-violet-900 hover:bg-black text-center">Finalizar compra</Link>
                             </div>
                             : <div>
@@ -54,6 +56,7 @@ export const ItemDetail = ({ item }) => {
                                 />
                             </div>
                     }
+                    <ToastContainer />
                 </div>
             </div>
         </div>

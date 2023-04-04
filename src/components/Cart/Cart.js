@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Summary } from "./Summary/Summary";
 import { EmptyCart } from "./EmptyCart/EmptyCart";
+import { ToastContainer } from 'react-toastify';
 import './Cart.css'
 
 export const Cart = () => {
@@ -15,7 +16,7 @@ export const Cart = () => {
     }
 
     return (
-        <div className="container mx-auto space-y-6 p-4 md:py-6 font-default">
+        <div className="container mx-auto space-y-6 p-4 md:py-6">
             <h2 className="text-xl">Tu compra</h2>
             <div className="lg:flex lg:items-start space-x-0 space-y-4 md:space-x-0 lg:space-x-4 lg:space-y-0 xl:space-x-8">
                 <div className="relative overflow-x-auto rounded-lg border border-slate-200">
@@ -41,9 +42,10 @@ export const Cart = () => {
                                         <td className="px-6 py-3">{prod.amount}</td>
                                         <td className="px-6 py-3">${prod.price * prod.amount}</td>
                                         <td className="px-6 py-3">
-                                            <button onClick={() => removeItemCart(prod.id)}>
+                                            <button onClick={() => removeItemCart(prod)}>
                                                 <FontAwesomeIcon icon={solid('trash')} size='lg' className="trash" />
                                             </button>
+                                            <ToastContainer />
                                         </td>
                                     </tr>
                                 ))

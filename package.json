@@ -14,10 +14,12 @@
     "firebase": "^9.19.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
-    "sweetalert": "^2.1.2",
+    "react-toastify": "^9.1.2",
+    "sweetalert2": "^11.7.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

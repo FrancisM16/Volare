@@ -10,7 +10,7 @@ export const CartWidget = () => {
 
     return (
         <Link to="/cart" className={`cart-widget ${cart.length > 0 ? 'cart-widget-active' : ''}`}>
-            <button className="py-4 px-8 relative border-transparent font-default">
+            <button className="py-4 px-8 relative border-transparent">
                 <FontAwesomeIcon icon={solid('cart-shopping')} size='lg' />
                 <span className="absolute inset-0 object-right-top ml-4">
                     <div className="inline-flex px-1.5 py-0.5 rounded-full text-xs bg-violet-900 text-white">
