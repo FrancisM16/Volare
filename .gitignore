@@ -102,11 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
-
-# Eslint
-.eslintignore
-.eslintrc.js
-
-# Prettier
-.prettierignore
-.prettierrc

@@ -54,7 +54,6 @@ export const Orders = () => {
 								<th className='px-6 py-3'>N° orden</th>
 								<th className='px-6 py-3'>Fecha</th>
 								<th className='px-6 py-3'>Precio total</th>
-								<th className='px-6 py-3'>Acciones</th>
 							</tr>
 						</thead>
 						<tbody className='text-gray-700 text-sm'>
@@ -65,9 +64,6 @@ export const Orders = () => {
 										<td className='px-6 py-3'>{order.id} </td>
 										<td className='px-6 py-3'>{date.toLocaleString()}</td>
 										<td className='px-6 py-3'>${order.total}</td>
-										<td>
-											<button>Ver más</button>
-										</td>
 									</tr>
 								);
 							})}
