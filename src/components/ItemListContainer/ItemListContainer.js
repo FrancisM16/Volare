@@ -11,12 +11,21 @@ import { db } from '../../firebase/config';
 export const ItemListContainer = () => {
 	const [productos, setProductos] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [categoryName, setCategoryName] = useState(undefined);
 	const navigate = useNavigate();
 	const { categoryId } = useParams();
 
 	useEffect(() => {
 		if (!categories.some(category => category.type === categoryId)) {
 			navigate('/');
+			setCategoryName('Productos');
+		} else if (categoryId === undefined) {
+			setCategoryName('Productos');
+		} else {
+			const name = categories.find(
+				category => category.type === categoryId
+			).name;
+			setCategoryName(name);
 		}
 
 		setLoading(true);
@@ -54,7 +63,7 @@ export const ItemListContainer = () => {
 						coordX='inset-x-2/4'
 						coordY='inset-y-2/4'
 					/>
-					<ItemList items={productos} category={categoryId} />
+					<ItemList items={productos} category={categoryName} />
 				</div>
 			)}
 		</article>
