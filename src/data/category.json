@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Calzados",
+        "type": "footwear"
+    },
+    {
+        "id": 2,
+        "name": "Ropa",
+        "type": "clothing"
+    },
+    {
+        "id": 3,
+        "name": "Accesorios",
+        "type": "accesory"
+    }
+]

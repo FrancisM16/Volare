@@ -4,25 +4,25 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
-    "@fortawesome/free-brands-svg-icons": "^6.3.0",
-    "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "babel-plugin-macros": "^3.1.0",
+    "firebase": "^9.19.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.43.9",
+    "react-phone-number-input": "^3.2.19",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
-    "web-vitals": "^2.1.4"
+    "react-toastify": "^9.1.2",
+    "sweetalert2": "^11.7.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write .",
+    "lint": "eslint --fix . --ext .js, .jsx"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +43,12 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.2.7"
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2"
   }
 }
