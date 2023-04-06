@@ -11,35 +11,36 @@ import { Profile } from './components/Profile/Profile';
 import { LoggedInRoutes } from './routes/LoggedInRoutes';
 import { LoggedOutRoutes } from './routes/LoggedOutRoutes';
 
-
 function App() {
+	return (
+		<AuthProvider>
+			<CartProvider>
+				<BrowserRouter>
+					<Navbar />
+					<Routes>
+						<Route path='/' element={<ItemListContainer />} />
+						<Route
+							path='/category/:categoryId'
+							element={<ItemListContainer />}
+						/>
+						<Route path='/detail/:itemId' element={<ItemDetailsContainer />} />
+						<Route path='/cart' element={<Cart />} />
 
-  return (
-    <AuthProvider>
-      <CartProvider>
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<ItemListContainer />} />
-            <Route path="/category/:categoryId" element={<ItemListContainer />} />
-            <Route path="/detail/:itemId" element={<ItemDetailsContainer />} />
-            <Route path="/cart" element={<Cart />} />
+						<Route element={<LoggedOutRoutes />}>
+							<Route path='/login' element={<Login />} />
+							<Route path='/register' element={<Register />} />
+						</Route>
 
-            <Route element={<LoggedOutRoutes />}>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-            </Route>
+						<Route element={<LoggedInRoutes />}>
+							<Route path='/profile' element={<Profile />} />
+						</Route>
 
-            <Route element={<LoggedInRoutes />}>
-              <Route path="/profile" element={<Profile />} />
-            </Route>
-
-            <Route path="*" element={<Navigate to="/" />} />
-          </Routes>
-        </BrowserRouter>
-      </CartProvider>
-    </AuthProvider>
-  );
+						<Route path='*' element={<Navigate to='/' />} />
+					</Routes>
+				</BrowserRouter>
+			</CartProvider>
+		</AuthProvider>
+	);
 }
 
 export default App;
