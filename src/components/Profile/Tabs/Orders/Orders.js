@@ -20,7 +20,6 @@ export const Orders = () => {
 			.then(orderCollection => {
 				const userOrders = orderCollection.docs
 					.map(order => {
-						console.log(order);
 						return { id: order.id, ...order.data() };
 					})
 					.sort((item1, item2) => {

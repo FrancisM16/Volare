@@ -51,7 +51,7 @@ export const CartProvider = ({ children }) => {
 			hideProgressBar: false,
 			closeOnClick: true,
 			pauseOnHover: true,
-			draggable: true,
+			draggable: false,
 			progress: undefined,
 			theme: 'light',
 		});
@@ -69,7 +69,7 @@ export const CartProvider = ({ children }) => {
 			hideProgressBar: false,
 			closeOnClick: true,
 			pauseOnHover: true,
-			draggable: true,
+			draggable: false,
 			progress: undefined,
 			theme: 'light',
 		});

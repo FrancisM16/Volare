@@ -1,7 +1,6 @@
 import { Item } from './Item/Item';
 
 export const ItemList = ({ items, category }) => {
-	console.log(category);
 	return (
 		<div className='container mx-auto py-6'>
 			{category ? (
