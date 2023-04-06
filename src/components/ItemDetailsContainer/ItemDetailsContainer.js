@@ -1,39 +1,40 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { Spinner } from "../Spinner/Spinner"
-import { ItemDetail } from "./ItemDetail/ItemDetail"
-import { db } from "../../firebase/config"
-import { doc, getDoc } from "firebase/firestore"
+import { useEffect, useState } from 'react';
+
+import { useParams, useNavigate } from 'react-router-dom';
+import { Spinner } from '../Spinner/Spinner';
+import { ItemDetail } from './ItemDetail/ItemDetail';
+import { db } from '../../firebase/config';
+import { doc, getDoc } from 'firebase/firestore';
 
 export const ItemDetailsContainer = () => {
-    const [item, setItem] = useState(null)
-    const [loading, setLoading] = useState(true)
+	const [item, setItem] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const navigate = useNavigate();
 
-    const { itemId } = useParams()
+	const { itemId } = useParams();
 
-    useEffect(() => {
-        setLoading(true)
+	useEffect(() => {
+		setLoading(true);
 
-        const docRef = doc(db,"products",itemId)
+		const docRef = doc(db, 'products', itemId);
 
-        getDoc(docRef)
-            .then((doc) => {
-                setItem({
-                    id: doc.id, ...doc.data()
-                })
-            })
-            .finally(() => setLoading(false))
+		getDoc(docRef)
+			.then(doc => {
+				if (!doc.exists()) {
+					navigate('/');
+				}
 
-    }, [itemId])
+				setItem({
+					id: doc.id,
+					...doc.data(),
+				});
+			})
+			.finally(() => setLoading(false));
+	}, [itemId, navigate]);
 
-    return (
-        <article className="h-full">
-            {
-                loading
-                    ? <Spinner/>
-                    : <ItemDetail item={item}/>
-            }
-        </article>
-    )
-
-}
+	return (
+		<article className='h-full'>
+			{loading ? <Spinner /> : <ItemDetail item={item} />}
+		</article>
+	);
+};
